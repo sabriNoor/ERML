@@ -49,6 +49,7 @@ export function mapASTIntoDiagramSchema(AST: ERMLParser.AST) {
     text: string
     textUnderlined?: boolean
     textDashed?: boolean
+    textDoubleUnderlined?: boolean
   }> = []
   const diagramEdges: Array<{
     src: string
@@ -73,6 +74,7 @@ export function mapASTIntoDiagramSchema(AST: ERMLParser.AST) {
     partial: "ellipse",
     composite: "ellipse",
     derived: "ellipse dashed",
+    unique: "ellipse",
     multivalued: "ellipse double",
   } as const
   const entityIdMapper: Record<string, string> = {}
@@ -124,10 +126,12 @@ export function mapASTIntoDiagramSchema(AST: ERMLParser.AST) {
 
       diagramNodes.push({
         id,
-        type: nodeShapeMapper[attribute.type],
+        type: nodeShapeMapper[attribute.type as keyof typeof nodeShapeMapper],
         text: attribute.name,
         textUnderlined: attribute.type === ERMLParser.API.PRIMARY,
         textDashed: attribute.type === ERMLParser.API.PARTIAL,
+        textDoubleUnderlined: attribute.type === ERMLParser.API.UNIQUE,
+        
       })
 
       diagramEdges.push({
@@ -148,7 +152,7 @@ export function mapDiagramSchemaIntoDagreSchema(
   const graphSchema = new dagreD3.graphlib.Graph().setGraph({})
 
   diagramSchema.diagramNodes.forEach(
-    ({ id, text, type, textUnderlined, textDashed }) => {
+    ({ id, text, type, textUnderlined, textDashed, textDoubleUnderlined }) => {
       const [shape, decoration] = type.split(" ")
 
       graphSchema.setNode(id, {
@@ -158,6 +162,7 @@ export function mapDiagramSchemaIntoDagreSchema(
           decoration && `${decoration}-node`,
           textUnderlined && "text-underlined-node",
           textDashed && "text-dashed-node",
+          textDoubleUnderlined && "text-unique-node",
         ]
           .filter(Boolean)
           .join(" "),

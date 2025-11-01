@@ -51,6 +51,7 @@ export const lang: languages.IMonarchLanguage = {
     "COMPOSITE",
     "N",
     "Infinity",
+    "UNIQUE",
   ],
 
   tokenizer: {
