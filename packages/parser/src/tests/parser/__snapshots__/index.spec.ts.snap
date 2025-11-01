@@ -186,7 +186,7 @@ Array [
 ]
 `;
 
-exports[`tests for parseAttributes should parse valid tokens with UNUNIQUE attribute 1`] = `
+exports[`tests for parseAttributes should parse valid tokens with UNIQUE attribute 1`] = `
 Array [
   Object {
     "name": "SSN",
@@ -194,7 +194,7 @@ Array [
   },
   Object {
     "name": "email",
-    "type": "ununique",
+    "type": "unique",
   },
   Object {
     "name": "salary",

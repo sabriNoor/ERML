@@ -46,10 +46,10 @@ describe("tests for parseAttributes", () => {
     }`)
     expect(parseAttributes(tokens, 3, tokens.length - 3)).toMatchSnapshot()
   })
-  it("should parse valid tokens with UNUNIQUE attribute", () => {
+  it("should parse valid tokens with UNIQUE attribute", () => {
     const tokens = tokenize(`ENTITY Baz {
       PRIMARY "SSN",
-      UNUNIQUE "email",
+      UNIQUE "email",
       SIMPLE "salary"
     }`)
     expect(parseAttributes(tokens, 3, tokens.length - 2)).toMatchSnapshot()
