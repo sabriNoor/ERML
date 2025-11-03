@@ -16,6 +16,7 @@ declare namespace ERMLParser {
     DERIVED = "derived",
     MULTIVALUED = "multivalued",
     COMPOSITE = "composite",
+    UNIQUE = "unique"
   }
 
   interface BaseNode {
@@ -34,6 +35,7 @@ declare namespace ERMLParser {
       | API.DERIVED
       | API.MULTIVALUED
       | API.COMPOSITE
+      | API.UNIQUE
     componentAttributes?: Attributes
   }
 

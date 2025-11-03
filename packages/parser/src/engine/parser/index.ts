@@ -48,6 +48,7 @@ export enum API {
   DERIVED = "derived",
   MULTIVALUED = "multivalued",
   COMPOSITE = "composite",
+  UNIQUE = "unique",
 }
 
 enum Keywords {
@@ -65,6 +66,7 @@ enum Keywords {
   DERIVED = "DERIVED",
   MULTIVALUED = "MULTIVALUED",
   COMPOSITE = "COMPOSITE",
+  UNIQUE = "UNIQUE",
 }
 
 function parseAttributes(
@@ -83,6 +85,7 @@ function parseAttributes(
     Keywords.PRIMARY,
     Keywords.PARTIAL,
     Keywords.DERIVED,
+    Keywords.UNIQUE,
   ]
   if (allowMultivalued) {
     allowedTypes.push(Keywords.MULTIVALUED)
@@ -118,7 +121,9 @@ function parseAttributes(
               API.PRIMARY,
               API.PARTIAL,
               API.DERIVED,
+              API.UNIQUE,
               API.MULTIVALUED,
+              
             ] as const
           )[matchedIndex])
       ),

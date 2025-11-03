@@ -186,6 +186,23 @@ Array [
 ]
 `;
 
+exports[`tests for parseAttributes should parse valid tokens with UNIQUE attribute 1`] = `
+Array [
+  Object {
+    "name": "SSN",
+    "type": "primary",
+  },
+  Object {
+    "name": "email",
+    "type": "unique",
+  },
+  Object {
+    "name": "salary",
+    "type": "simple",
+  },
+]
+`;
+
 exports[`tests for parseRelBody should parse valid tokens 1`] = `
 Object {
   "attributes": Array [

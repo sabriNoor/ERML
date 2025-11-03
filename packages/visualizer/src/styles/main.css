@@ -65,6 +65,13 @@ text {
   text-decoration: underline dashed;
 }
 
+.text-unique-node text {
+  fill: red;         
+  font-weight: bold;   
+  font-style: italic;  
+}
+
+
 .edgePath {
   stroke: #333;
   stroke-width: 1.5px;
@@ -72,4 +79,9 @@ text {
 
 .double-edge {
   filter: drop-shadow(2px 0 0 white) drop-shadow(2px 0 0 #000);
+}
+
+
+svg defs {
+  display: none; /* Prevents rendering of defs */
 }
